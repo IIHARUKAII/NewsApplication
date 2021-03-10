@@ -1,3 +1,5 @@
+import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:news/helper/news.dart';
@@ -42,6 +44,34 @@ class _CategoryNewsState extends State<CategoryNews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BubbledNavigationBar(
+        defaultBubbleColor: Colors.blue,
+        onTap: (index) {
+          // handle tap
+        },
+        items: <BubbledNavigationBarItem>[
+          BubbledNavigationBarItem(
+            icon:       Icon(CupertinoIcons.home, size: 30, color: Colors.red),
+            activeIcon: Icon(CupertinoIcons.home, size: 30, color: Colors.white),
+            title: Text('Home', style: TextStyle(color: Colors.white, fontSize: 12),),
+          ),
+          BubbledNavigationBarItem(
+            icon:       Icon(CupertinoIcons.search, size: 30, color: Colors.purple),
+            activeIcon: Icon(CupertinoIcons.search, size: 30, color: Colors.white),
+            title: Text('Phone', style: TextStyle(color: Colors.white, fontSize: 12),),
+          ),
+          BubbledNavigationBarItem(
+            icon:       Icon(CupertinoIcons.square_favorites, size: 30, color: Colors.teal),
+            activeIcon: Icon(CupertinoIcons.square_favorites, size: 30, color: Colors.white),
+            title: Text('Info', style: TextStyle(color: Colors.white, fontSize: 12),),
+          ),
+          BubbledNavigationBarItem(
+            icon:       Icon(CupertinoIcons.profile_circled, size: 30, color: Colors.cyan),
+            activeIcon: Icon(CupertinoIcons.profile_circled, size: 30, color: Colors.white),
+            title: Text('Profile', style: TextStyle(color: Colors.white, fontSize: 12),),
+          ),
+        ],
+      ),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,6 +112,7 @@ class _CategoryNewsState extends State<CategoryNews> {
                         title:  articles[index].title,
                         desc: articles[index].description,
                         url: articles[index].url,
+                        publishedAt: articles[index].publishedAt,
                       );
                     }),
               )
@@ -97,7 +128,8 @@ class _CategoryNewsState extends State<CategoryNews> {
 class BlogTile extends StatelessWidget {
 
   final String imageUrl, title, desc, url;
-  BlogTile({@required this.imageUrl, @required this.title, @required this.desc, @required this.url});
+  final String publishedAt;
+  BlogTile({@required this.imageUrl, @required this.title, @required this.desc, @required this.url, @required this.publishedAt});
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +143,7 @@ class BlogTile extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -123,9 +156,9 @@ class BlogTile extends StatelessWidget {
                 color: Colors.black
             ),),
             SizedBox(height: 8,),
-            Text(desc, style: TextStyle(
+            Text(publishedAt, style: TextStyle(
                 color: Colors.grey
-            ),)
+            ),),
           ],
         ),
       ),
