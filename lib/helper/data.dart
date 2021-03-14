@@ -11,6 +11,7 @@ List<CategoryModel> getCategories(){
   categoryModel.imageUrl = "https://images.unsplash.com/photo-1614312385003-dcea7b8b6ab6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80";
   category.add(categoryModel);
 
+
   categoryModel = new CategoryModel();
   //
   categoryModel.bannerName = "Tesla";
@@ -29,13 +30,13 @@ List<CategoryModel> getCategories(){
 
   categoryModel = new CategoryModel();
   //
-  // categoryModel.bannerName = "TechCrunch";
-  // categoryModel.categoryName = "apple";
-  // categoryModel.q = "techcrunch";
-  // categoryModel.imageUrl = "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80";
-  // category.add(categoryModel);
-  //
-  // categoryModel = new CategoryModel();
+  categoryModel.bannerName = "Google";
+  categoryModel.categoryName = "Google";
+  categoryModel.q = "google";
+  categoryModel.imageUrl = "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80";
+  category.add(categoryModel);
+
+  categoryModel = new CategoryModel();
 
   return category;
 

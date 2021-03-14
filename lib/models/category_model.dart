@@ -4,5 +4,6 @@ class CategoryModel{
   String imageUrl;
   String bannerName;
   String q;
+  String word;
 
 }

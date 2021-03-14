@@ -20,7 +20,7 @@ class CategoryNews extends StatefulWidget {
 class _CategoryNewsState extends State<CategoryNews> {
 
 
-  // ignore: deprecated_member_use
+
   List<ArticleModel> articles = new List<ArticleModel>();
   bool _loading = true;
 
