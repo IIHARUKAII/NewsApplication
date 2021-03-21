@@ -85,6 +85,7 @@ class _CategoryNewsState extends State<CategoryNews> {
                         desc: articles[index].description,
                         url: articles[index].url,
                         publishedAt: articles[index].publishedAt,
+                        author: articles[index].author,
                       );
                     }),
               )
@@ -97,14 +98,15 @@ class _CategoryNewsState extends State<CategoryNews> {
   }
 }
 
+
 class BlogTile extends StatelessWidget {
 
-  final String imageUrl, title, desc, url;
-  final String publishedAt;
-  BlogTile({@required this.imageUrl, @required this.title, @required this.desc, @required this.url, @required this.publishedAt});
+  final String imageUrl, title, desc, url, publishedAt, author;
+  BlogTile({@required this.imageUrl, @required this.title, @required this.desc, @required this.url, @required this.publishedAt, @required this.author});
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
@@ -114,13 +116,24 @@ class BlogTile extends StatelessWidget {
         ));
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 16),
-        padding: EdgeInsets.symmetric(horizontal: 16),
+
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: Image.network(imageUrl)),
+
+            SizedBox(height: 8,),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.redAccent,
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              child: Text(author?? 'default'),
+            ),
+
             SizedBox(height: 8,),
             Text(title, style: TextStyle(
                 fontSize: 17,
@@ -128,12 +141,39 @@ class BlogTile extends StatelessWidget {
                 color: Colors.black
             ),),
             SizedBox(height: 8,),
-            Text(publishedAt, style: TextStyle(
-                color: Colors.grey
-            ),),
+            Padding(
+              padding:  EdgeInsets.only(left: 20),
+              child:Row(
+                children: [Icon(Icons.timer,),
+                  Text(publishedAt, style: TextStyle(
+                      color: Colors.grey
+                  ),),
+                ],
+              ),
+            ),
+            SizedBox(height: 8,),
+
+
+            // function to handle when heart icon is tapped
+
+            ///Icon favorite
+            // SizedBox(height: 8,),
+            // ListTile(
+            //   trailing: Icon(Icons.favorite),
+            // ),
+
+            // SizedBox(height: 8,),
+            // Text(desc, style: TextStyle(
+            //     color: Colors.grey
+            // ),)
           ],
         ),
       ),
     );
+
   }
+
 }
+
+
+
